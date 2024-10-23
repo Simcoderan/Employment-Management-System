@@ -8,7 +8,10 @@ const Login =() =>{
 
     const submitHandler = (e) =>{
         e.preventDefault()
-        console.log ("Form Submitted")
+        console.log ("email is",email)
+        console.log ("password is",password)
+        setEmail("")
+        setPassword("")
 
     }
     return (
@@ -29,7 +32,14 @@ const Login =() =>{
                      required 
                     className=' outline-none  bg-transparent border-2 border-blue-400 text-xl py-4 px-5 rounded-full  placeholder:text-gray-400' type="email" placeholder='Enter your email'
                     />
-                    <input required className='outline-none  bg-transparent border-2 border-blue-400 text-xl py-4 px-5 rounded-full  mt-4 placeholder:text-gray-400'  type="password" placeholder='Enter password'/>
+                    <input
+                    value ={password}
+                    onChange={(e)=>{
+                        setPassword(e.target.value)
+                    }}
+                     required 
+                     className='outline-none  bg-transparent border-2 border-blue-400 text-xl py-4 px-5 rounded-full  mt-4 placeholder:text-gray-400'  type="password" placeholder='Enter password'
+                     />
                     <button className='mt-5 text-white border-none outline-none   border-2 bg-blue-700 text-xl py-4 px-5 rounded-full  mt-4 placeholder:text-white'>Login</button>
                 </form>
 
