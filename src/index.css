@@ -4,12 +4,12 @@
 @tailwind utilities;
 
 *{ 
-    color : #fff
+    color : #fffcfc
 
 }
 
 body{
-    background-color: #111;
+    background-color: #030303;
 }
 
 #tasklist ::-webkit-scrollbar{
