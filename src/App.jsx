@@ -10,14 +10,28 @@ const App = () => {
   const [user, setUser] = useState(null);
   const authData = useContext(AuthContext);
 
+  useEffect(()=> {
+
+    if(authData){
+      const loggedInUser = localStorage.getItem("loggedUser")
+      if(loggedInUser){
+        setUser(loggedInUser.role)
+      }
+    }
+  },[authData]);
+
   const handleLogin = (email, password) => {
     // Check for admin credentials
     if (email === 'admin@me.com' && password === '123') {
       setUser('admin');
+      localStorage.setItem('loggedInUser', JSON.stringify({role:'admin'}))
+      
     } 
     // Check for employee credentials
     else if (authData && authData.employees.find((e) => email === e.email && e.password === password)) {
       setUser('employee');
+
+      localStorage.setItem('loggedInUser', JSON.stringify({role:'employee'}))
     } 
     // Invalid credentials
     else {
