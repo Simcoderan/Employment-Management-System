@@ -1,11 +1,18 @@
-import React, { createContext } from 'react';
-import { getLocalStorage } from '../utils/localStorage';
+// context/AuthProvider.jsx
+
+import React, { createContext, useEffect, useState } from 'react';
+import { getLocalStorage, setLocalStorage } from '../utils/localStorage';
 
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-    // Define userData here, or retrieve it from localStorage or a state management solution.
-    const userData = getLocalStorage(); // Adjust this line based on your needs
+    const [userData, setUserData] = useState(null);
+
+    useEffect(() => {
+        setLocalStorage();
+        const { employees, admin } = getLocalStorage();
+        setUserData({ employees, admin });
+    }, []);
 
     return (
         <AuthContext.Provider value={userData}>
@@ -15,4 +22,3 @@ const AuthProvider = ({ children }) => {
 }
 
 export default AuthProvider;
-
