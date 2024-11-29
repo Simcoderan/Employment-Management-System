@@ -1,45 +1,35 @@
-import React from 'react'
+import React, { useContext } from 'react';
+import { AuthContext } from '../../context/AuthProvider';
 
-const AllTask=() =>{
-    return(
-        <div className='bg-[#1c1c1c] p-5 rounded mt-5 h-48 overflow-auto'>
+const AllTask = () => {
+  const authData = useContext(AuthContext);
 
-            <div className='bg-red-400 mb-2 py-2 px-4 flex justify-between rounded'>
-                <h2>Simran</h2>
-                <h3>Make UI design</h3>
-                <h5>Status</h5>
-            </div>
+  return (
+    <div className="bg-black p-5 rounded mt-5 h-60 overflow-auto">
+      {/* Header Row */}
+      <div className="bg-[#FFD700] mb-2 py-2 px-4 flex w-full rounded">
+        <h2 className="flex-1 text-black font-bold text-center">Employee Name</h2>
+        <h3 className="flex-1 text-black font-bold text-center">New Task</h3>
+        <h5 className="flex-1 text-black font-bold text-center">Active Task</h5>
+        <h5 className="flex-1 text-black font-bold text-center">Completed</h5>
+        <h5 className="flex-1 text-black font-bold text-center">Failed</h5>
+      </div>
 
-
-            <div className='bg-yellow-400  mb-2   py-2 px-4 flex justify-between rounded'>
-                <h2>Simran</h2>
-                <h3>Make UI design</h3>
-                <h5>Status</h5>
-            </div>
-
-
-            <div className='bg-green-400   mb-2 py-2 px-4 flex justify-between rounded'>
-                <h2>Simran</h2>
-                <h3>Make UI design</h3>
-                <h5>Status</h5>
-            </div>
-
-
-            <div className='bg-purple-400   mb-2  py-2 px-4 flex justify-between rounded'>
-                <h2>Simran</h2>
-                <h3>Make UI design</h3>
-                <h5>Status</h5>
-            </div>
-
-
-            <div className='bg-blue-400   mb-2 py-2 px-4 flex justify-between rounded'>
-                <h2>Simran</h2>
-                <h3>Make UI design</h3>
-                <h5>Status</h5>
-            </div>
-
+      {/* Employee Data Rows */}
+      {authData.employees.map((elem, idx) => (
+        <div
+          key={elem.id || idx}
+          className="bg-[#1F2937] mb-2 py-2 px-4 flex w-full rounded text-white"
+        >
+          <h2 className="flex-1 text-center">{elem.firstName}</h2>
+          <h3 className="flex-1 text-center">{elem.taskCounts.newTask}</h3>
+          <h5 className="flex-1 text-center">{elem.taskCounts.active}</h5>
+          <h5 className="flex-1 text-center">{elem.taskCounts.completed}</h5>
+          <h5 className="flex-1 text-center">{elem.taskCounts.failed}</h5>
         </div>
-    )
-}
+      ))}
+    </div>
+  );
+};
 
-export default AllTask
+export default AllTask;

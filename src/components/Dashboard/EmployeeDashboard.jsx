@@ -5,10 +5,19 @@ import TaskList from "../../TaskList/TaskList";
 
 const EmployeeDashboard = ({ data }) => {
   return (
-    <div className="p-10 bg-[#1C1C1C] h-screen">
+    <div className="min-h-screen bg-black text-white p-8">
+      {/* Header Section */}
       <Header data={data} />
-      <TaskListNumbers data={data} />
-      <TaskList data={data} />
+
+      {/* Task Statistics Section */}
+      <div className="mt-6">
+        <TaskListNumbers data={data} />
+      </div>
+
+      {/* Task List Section */}
+      <div className="mt-8">
+        <TaskList data={data} />
+      </div>
     </div>
   );
 };

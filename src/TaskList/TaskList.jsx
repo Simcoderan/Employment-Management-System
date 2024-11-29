@@ -1,82 +1,36 @@
 import React from "react";
+import AcceptTask from "./AcceptTask";
+import NewTask from "./NewTask";
+import CompleteTask from "./CompleteTask";
+import FailedTask from "./FailedTask";
 
 const TaskList =({data}) => {
     return (
         <div id='tasklist' className = 'h-[55%]  overflow-x-auto flex items-center justify-start gap-5  flex-nowrap w-full py-5 mt-10'>
-            <div className =" flex-shrink-0 h-full w-[300px] p-5 bg-teal-500 rounded-xl">  
-              <div className='flex justify-between items-center'>
-              <h3 className="bg-blue-600 text-sm px-3 py-1 rounded">High</h3>
-              <h4 className="text-sm">20 Feb 2024</h4>
-                </div>  
-                <h2 className='mt-5 text-2xl font-semibold '>Make a Youtube video</h2>
-                <p className='text-sm mt-2'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque veniam, officia cupiditate dolore labore corporis placeat vel accusamus possimus nulla aperiam autem, qui soluta dolor tenetur ab et. Provident, ex!
+       {data.tasks.map((elem,idx)=>{
 
-                </p>
+        if(elem.active){
+            return <AcceptTask key={idx} data={elem}/>
+        }
 
-</div>
+        if(elem.NewTask){
+            return <NewTask key={idx}   data={elem}/>
+        }
 
+        if(elem.completed){
+            return <CompleteTask key={idx}  data={elem}/>
+        }
 
-
-<div className =" flex-shrink-0 h-full w-[300px] p-5 bg-teal-500 rounded-xl">  
-              <div className='flex justify-between items-center'>
-              <h3 className="bg-blue-600 text-sm px-3 py-1 rounded">High</h3>
-              <h4 className="text-sm">20 Feb 2024</h4>
-                </div>  
-                <h2 className='mt-5 text-2xl font-semibold '>Work on Project</h2>
-                <p className='text-sm mt-2'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque veniam, officia cupiditate dolore labore corporis placeat vel accusamus possimus nulla aperiam autem, qui soluta dolor tenetur ab et. Provident, ex!
-
-                </p>
-
-</div>
+        if(elem.failed){
+            return <FailedTask key={idx}  data={elem}/>
+        }
 
 
 
+        
+       })}
 
-
-
-
-<div className =" flex-shrink-0 h-full w-[300px] p-5 bg-teal-500 rounded-xl">  
-              <div className='flex justify-between items-center'>
-              <h3 className="bg-blue-600 text-sm px-3 py-1 rounded">High</h3>
-              <h4 className="text-sm">20 Feb 2024</h4>
-                </div>  
-                <h2 className='mt-5 text-2xl font-semibold '>Make a report</h2>
-                <p className='text-sm mt-2'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque veniam, officia cupiditate dolore labore corporis placeat vel accusamus possimus nulla aperiam autem, qui soluta dolor tenetur ab et. Provident, ex!
-
-                </p>
-
-</div>
-
-
-
-
-
-
-
-<div className =" flex-shrink-0 h-full w-[300px] p-5 bg-teal-500 rounded-xl">  
-              <div className='flex justify-between items-center'>
-              <h3 className="bg-blue-600 text-sm px-3 py-1 rounded">High</h3>
-              <h4 className="text-sm">20 Feb 2024</h4>
-                </div>  
-                <h2 className='mt-5 text-2xl font-semibold '>Work on upcoming project</h2>
-                <p className='text-sm mt-2'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque veniam, officia cupiditate dolore labore corporis placeat vel accusamus possimus nulla aperiam autem, qui soluta dolor tenetur ab et. Provident, ex!
-
-                </p>
-
-</div>
-            
-
-
-
-
-
-          
-
-            </div>
+ </div>
             )
         }
 
